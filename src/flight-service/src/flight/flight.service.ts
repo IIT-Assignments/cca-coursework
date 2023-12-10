@@ -24,4 +24,8 @@ export class FlightService {
     const flight = await this.flightModal.findOne({ flightNumber });
     return flight;
   }
+
+  async delete(flightNumber: string): Promise<Flight> {
+    return await this.flightModal.findOneAndDelete({ flightNumber });
+  }
 }
