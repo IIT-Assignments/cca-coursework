@@ -19,4 +19,9 @@ export class FlightService {
     const newFlight = await this.flightModal.create(flight);
     return newFlight;
   }
+
+  async findByFlightNumber(flightNumber: string): Promise<Flight> {
+    const flight = await this.flightModal.findOne({ flightNumber });
+    return flight;
+  }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { FlightService } from './flight.service';
 import { Flight } from './schemas/flight.schema';
 
@@ -17,5 +17,13 @@ export class FlightController {
     flight,
   ): Promise<Flight> {
     return this.flightService.create(flight);
+  }
+
+  @Get(':flightNumber')
+  async getByFlightNumber(
+    @Param('flightNumber')
+    flightNumber: string,
+  ): Promise<Flight> {
+    return this.flightService.findByFlightNumber(flightNumber);
   }
 }
