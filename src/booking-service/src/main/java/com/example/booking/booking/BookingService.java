@@ -1,4 +1,4 @@
-package com.example.demo.booking;
+package com.example.booking.booking;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;

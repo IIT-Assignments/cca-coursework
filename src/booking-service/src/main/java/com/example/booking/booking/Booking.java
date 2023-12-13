@@ -1,4 +1,4 @@
-package com.example.demo.booking;
+package com.example.booking.booking;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
