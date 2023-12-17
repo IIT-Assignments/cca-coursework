@@ -1,0 +1,22 @@
+# Fetching the latest node image on alpine linux
+FROM node:alpine AS development
+
+# Declaring env
+ENV PORT 3001
+
+# Setting up the work directory
+WORKDIR /react-app
+
+# Installing dependencies
+COPY ./package*.json /react-app
+
+ARG REACT_APP_FLIGHT_SERVICE_ARG
+ENV REACT_APP_FLIGHT_SERVICE=$REACT_APP_FLIGHT_SERVICE_ARG
+
+RUN npm install
+
+# Copying all the files in our project
+COPY . .
+
+# Starting our application
+CMD ["npm","start]
