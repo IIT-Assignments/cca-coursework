@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.flight-service.name }}
+  name: {{ .Values.flightservice.name }}
   labels:
-    app: {{ .Values.flight-service.name }}
+    app: {{ .Values.flightservice.name }}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: {{ .Values.flight-service.name }}
+      app: {{ .Values.flightservice.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.flight-service.name }}
+        app: {{ .Values.flightservice.name }}
     spec:
       containers:
-        - name: {{ .Values.flight-service.name }}
-          image: senuradockacc/{{ .Values.flight-service.image.name }}:{{ .Values.flight-service.image.tag }}
+        - name: {{ .Values.flightservice.name }}
+          image: senuradockacc/{{ .Values.flightservice.image.name }}:{{ .Values.flightservice.image.tag }}
           imagePullPolicy: Always
           ports:
-            - containerPort: {{ .Values.flight-service.image.exposedPort }}
+            - containerPort: {{ .Values.flightservice.image.exposedPort }}

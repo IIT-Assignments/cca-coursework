@@ -1,4 +1,4 @@
-flight-service:
+flightservice:
   name: flight-service
 
   image:
