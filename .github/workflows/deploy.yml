@@ -24,7 +24,6 @@ jobs:
         docker push senuradockacc/flight-service:v1
 
         cd ../booking-service 
-        mvn package -Dmaven.test.skip
         docker build -t senuradockacc/booking-service:v1 .
         docker push senuradockacc/booking-service:v1
 
