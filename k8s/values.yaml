@@ -1,7 +1,31 @@
+bookingservice:
+  name: booking-service
+
+  image:
+    name: booking-service
+    tag: v1
+    exposedPort: 8080
+
 flightservice:
   name: flight-service
 
   image:
     name: flight-service
     tag: v1
+    exposedPort: 3001
+
+frontend:
+  name: frontend
+
+  image:
+    name: frontend
+    tag: v2
     exposedPort: 3000
+
+mainserver:
+  name: main-server
+
+  image:
+    name: main-server
+    tag: v1
+    exposedPort: 3005

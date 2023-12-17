@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.bookingservice.name }}
+  labels:
+    app: {{ .Values.bookingservice.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.bookingservice.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.bookingservice.name }}
+    spec:
+      containers:
+        - name: {{ .Values.bookingservice.name }}
+          image: senuradockacc/{{ .Values.bookingservice.image.name }}:{{ .Values.bookingservice.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.bookingservice.image.exposedPort }}

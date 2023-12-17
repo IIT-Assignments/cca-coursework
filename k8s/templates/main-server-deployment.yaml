@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.mainserver.name }}
+  labels:
+    app: {{ .Values.mainserver.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.mainserver.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mainserver.name }}
+    spec:
+      containers:
+        - name: {{ .Values.mainserver.name }}
+          image: senuradockacc/{{ .Values.mainserver.image.name }}:{{ .Values.mainserver.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.mainserver.image.exposedPort }}
