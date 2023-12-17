@@ -2,7 +2,7 @@
 FROM node:alpine AS development
 
 # Declaring env
-ENV PORT 3001
+EXPOSE 3001
 
 # Setting up the work directory
 WORKDIR /react-app
