@@ -1,9 +1,6 @@
 # Fetching the latest node image on alpine linux
 FROM node:alpine AS development
 
-# Declaring env
-EXPOSE 3001
-
 # Setting up the work directory
 WORKDIR /react-app
 
@@ -18,5 +15,7 @@ RUN npm install
 # Copying all the files in our project
 COPY . .
 
+EXPOSE 3000
+
 # Starting our application
-CMD ["npm","start]
+CMD ["npm","start"]

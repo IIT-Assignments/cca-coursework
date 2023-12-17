@@ -27,17 +27,17 @@ jobs:
     - name: Build and push Docker images
       run: |
         cd src
-        cd flight-service && docker build -t senuradockacc/flight-service:v2 .
-        docker push senuradockacc/flight-service:v2
+        cd flight-service && docker build -t senuradockacc/flight-service:v3 .
+        docker push senuradockacc/flight-service:v3
 
         cd ../booking-service 
         mvn package -Dmaven.test.skip
-        docker build -t senuradockacc/booking-service:v2 .
-        docker push senuradockacc/booking-service:v2
+        docker build -t senuradockacc/booking-service:v3 .
+        docker push senuradockacc/booking-service:v3
 
         cd ../frontend
-        docker build -t senuradockacc/frontend:v2 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
-        docker push senuradockacc/frontend:v2
+        docker build -t senuradockacc/frontend:v3 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
+        docker push senuradockacc/frontend:v3
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0
@@ -47,9 +47,10 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
     
-    - name: Deploy to GKE
+    - name: Cluster Configure GKE
       run: |
         gcloud container clusters get-credentials clustertest --project ${{ secrets.GCP_PROJECT_ID }} --region us-central1-c
+    
     - name: Deploy nodejs helm chart to EKS
       run: |
         helm install ./k8s --generate-name
