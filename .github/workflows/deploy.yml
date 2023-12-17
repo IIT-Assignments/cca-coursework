@@ -19,29 +19,29 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    # - name: Login to Docker Registry
-    #   run: |
-    #     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-    #     # Or use the appropriate command for your container registry
+    - name: Login to Docker Registry
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        # Or use the appropriate command for your container registry
 
-    # - name: Build and push Docker images
-    #   run: |
-    #     cd src
-    #     cd flight-service && docker build -t senuradockacc/flight-service:v1 .
-    #     docker push senuradockacc/flight-service:v1
+    - name: Build and push Docker images
+      run: |
+        cd src
+        cd flight-service && docker build -t senuradockacc/flight-service:v1 .
+        docker push senuradockacc/flight-service:v1
 
-    #     cd ../main-server
-    #     docker build -t senuradockacc/main-server:v1 .
-    #     docker push senuradockacc/main-server:v1
+        cd ../main-server
+        docker build -t senuradockacc/main-server:v1 .
+        docker push senuradockacc/main-server:v1
 
-    #     cd ../booking-service 
-    #     mvn package -Dmaven.test.skip
-    #     docker build -t senuradockacc/booking-service:v1 .
-    #     docker push senuradockacc/booking-service:v1
+        cd ../booking-service 
+        mvn package -Dmaven.test.skip
+        docker build -t senuradockacc/booking-service:v1 .
+        docker push senuradockacc/booking-service:v1
 
-    #     cd ../frontend
-    #     docker build -t senuradockacc/frontend:v1 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
-    #     docker push senuradockacc/frontend:v1
+        cd ../frontend
+        docker build -t senuradockacc/frontend:v2 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
+        docker push senuradockacc/frontend:v2
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0
@@ -57,4 +57,5 @@ jobs:
     
     - name: Deploy nodejs helm chart to EKS
       run: |
-        helm install ./k8s --generate-name
+        # helm install ./k8s --generate-name #This is for the first time
+        helm upgrade k8s-1702826047 ./k8s 
