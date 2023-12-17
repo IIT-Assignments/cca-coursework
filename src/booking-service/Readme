@@ -1,0 +1,8 @@
+#Build the project
+mvn package -Dmaven.test.skip
+
+#Build docker image
+docker build -t senuradockacc/booking-service:latest .
+
+#Run docker container
+docker container run -d -p 8080:8080 senuradockacc/booking-service:latest
