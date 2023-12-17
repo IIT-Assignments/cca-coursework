@@ -19,5 +19,6 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        cd src/flight-service && docker build -t senuradockacc/flight-service:v1 --build-arg DB_URI_ARG=${{ secrets.DB_URI }} .
+        cd src
+        cd flight-service && docker build -t senuradockacc/flight-service:v1 --build-arg DB_URI_ARG=${{ secrets.DB_URI }} .
         docker push senuradockacc/flight-service:v1
