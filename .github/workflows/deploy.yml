@@ -36,5 +36,6 @@ jobs:
         gcloud container clusters get-credentials clustertest --project ${{ secrets.GCP_PROJECT_ID }} --region us-central1-c
     - name: Deploy nodejs helm chart to EKS
       run: |
+        helm repo add cca-coursework https://github.com/IIT-Assignments/cca-coursework
         cd k8s && helm install --values=values-flights.yaml --generate-name cca-coursework/k8s
         helm install --values=values-booking.yaml --generate-name cca-coursework/k8s
