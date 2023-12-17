@@ -12,6 +12,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
     - name: Login to Docker Registry
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -24,6 +31,7 @@ jobs:
         docker push senuradockacc/flight-service:v1
 
         cd ../booking-service 
+        mvn package -Dmaven.test.skip
         docker build -t senuradockacc/booking-service:v1 .
         docker push senuradockacc/booking-service:v1
 
