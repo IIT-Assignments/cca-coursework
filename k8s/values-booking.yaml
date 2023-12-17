@@ -1,0 +1,7 @@
+iitservice:
+  name: booking-service
+
+  image:
+    name: booking-service
+    tag: v1
+    exposedPort: 8080

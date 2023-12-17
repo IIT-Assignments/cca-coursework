@@ -1,4 +1,4 @@
-flightservice:
+iitservice:
   name: flight-service
 
   image:
