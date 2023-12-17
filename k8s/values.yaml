@@ -1,0 +1,7 @@
+flightservice:
+  name: flight-service
+
+  image:
+    name: flight-service
+    tag: v1
+    exposedPort: 3000

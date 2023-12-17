@@ -5,13 +5,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FlightModule } from './flight/flight.module';
 
+const DB_URI=`mongodb+srv://senura:senura8864@devconnector.y7pfp.mongodb.net/iit?retryWrites=true&w=majority`
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DB_URI),
+    MongooseModule.forRoot(DB_URI),
     FlightModule,
   ],
   controllers: [AppController],
