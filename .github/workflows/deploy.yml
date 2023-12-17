@@ -12,16 +12,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Login to Docker Registry
-      run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        # Or use the appropriate command for your container registry
+    # - name: Login to Docker Registry
+    #   run: |
+    #     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    #     # Or use the appropriate command for your container registry
 
-    - name: Build and push Docker images
-      run: |
-        cd src
-        cd flight-service && docker build -t senuradockacc/flight-service:v1 .
-        docker push senuradockacc/flight-service:v1
+    # - name: Build and push Docker images
+    #   run: |
+    #     cd src
+    #     cd flight-service && docker build -t senuradockacc/flight-service:v1 .
+    #     docker push senuradockacc/flight-service:v1
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0
