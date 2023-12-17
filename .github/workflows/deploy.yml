@@ -27,17 +27,17 @@ jobs:
     - name: Build and push Docker images
       run: |
         cd src
-        cd flight-service && docker build -t senuradockacc/flight-service:v3 .
-        docker push senuradockacc/flight-service:v3
+        cd flight-service && docker build -t senuradockacc/flight-service:v4 .
+        docker push senuradockacc/flight-service:v4
 
         cd ../booking-service 
         mvn package -Dmaven.test.skip
-        docker build -t senuradockacc/booking-service:v3 .
-        docker push senuradockacc/booking-service:v3
+        docker build -t senuradockacc/booking-service:v4 .
+        docker push senuradockacc/booking-service:v4
 
         cd ../frontend
-        docker build -t senuradockacc/frontend:v3 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
-        docker push senuradockacc/frontend:v3
+        docker build -t senuradockacc/frontend:v4 --build-arg REACT_APP_FLIGHT_SERVICE_ARG=${{ secrets.REACT_APP_FLIGHT_SERVICE }} .
+        docker push senuradockacc/frontend:v4
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0

@@ -12,7 +12,7 @@ function ListContainer({ list }) {
   return (
     <div>
       <Grid container spacing={2}>
-        {list.length &&
+        {list && list.length &&
           list.map((item) => (
             <Grid key={item._id} item xs={4}>
               <Card sx={{ maxWidth: 345 }}>
