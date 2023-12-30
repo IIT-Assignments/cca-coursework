@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.reservationservice.name }}
-          image: rusiruavb/{{ .Values.reservationservice.image.name }}:{{ .Values.reservationservice.image.tag }}
+          image: senuradockacc/{{ .Values.reservationservice.image.name }}:{{ .Values.reservationservice.image.tag }}
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.reservationservice.image.exposedPort }}
