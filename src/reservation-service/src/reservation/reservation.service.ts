@@ -11,6 +11,7 @@ export class ReservationService {
   ) {}
 
   async createReservation(reservation: Reservation): Promise<Reservation> {
+    reservation._id = new mongoose.Types.ObjectId() as any;
     return await this.reservationModule.create(reservation);
   }
 

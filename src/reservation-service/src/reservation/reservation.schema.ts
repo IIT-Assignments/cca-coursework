@@ -9,7 +9,7 @@ export class Reservation {
   @Prop({ required: true })
   passportNo: string;
 
-  @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: '' })
+  @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: 'Flight' })
   flightId: string;
 
   @Prop()
