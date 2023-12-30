@@ -39,8 +39,7 @@ jobs:
         docker build -t senuradockacc/booking-service:v1 .
         docker push senuradockacc/booking-service:v1
 
-        cd src
-        cd reservation-service && docker build -t senuradockacc/reservation-service:v1 .
+        cd ../reservation-service && docker build -t senuradockacc/reservation-service:v1 .
         docker push senuradockacc/reservation-service:v1
 
         cd ../frontend
