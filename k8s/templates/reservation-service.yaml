@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.reservationservice.name }}
+spec:
+  selector:
+    app: {{ .Values.reservationservice.name }}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: {{ .Values.reservationservice.image.exposedPort }}
+  type: ClusterIP

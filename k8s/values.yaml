@@ -29,3 +29,11 @@ mainserver:
     name: main-server
     tag: v1
     exposedPort: 3005
+
+reservationservice:
+  name: reservation-service
+
+  image:
+    name: reservation-service
+    tag: latest
+    exposedPort: 8088

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.reservationservice.name }}
+  labels:
+    app: {{ .Values.reservationservice.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.reservationservice.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.reservationservice.name }}
+    spec:
+      containers:
+        - name: {{ .Values.reservationservice.name }}
+          image: rusiruavb/{{ .Values.reservationservice.image.name }}:{{ .Values.reservationservice.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.reservationservice.image.exposedPort }}
