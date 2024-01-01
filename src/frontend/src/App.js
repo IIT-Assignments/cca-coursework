@@ -6,6 +6,7 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import Reservations from "./pages/reservations";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -17,6 +18,8 @@ function App() {
       <div style={{ padding: "5%" }}>
         <Routes>
           <Route path="/" element={<><FlightForm /><Flights /></>}>
+          </Route>
+          <Route path="/reservations" element={<Reservations/>}>
           </Route>
         </Routes>
       </div>

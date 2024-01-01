@@ -9,7 +9,7 @@ import Grid from "@mui/material/Grid";
 import AirlineImage from "../../assets/airline.webp"
 import BasicModal from "../modal";
 
-function ListContainer({ list }) {
+function ListContainerReservations({ list }) {
 
   const [open, setOpen] = React.useState(false);
   const [flightNumber, setFlightNumber] = React.useState(null);
@@ -31,29 +31,23 @@ function ListContainer({ list }) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                  Flight Number : {item.flightNumber}
+                  Flight Number : {item.flightId}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                  Airline : {item.airline}
+                  Passport No : {item.passportNo}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                  Departure Airport : {item.departureAirport}
+                  Email : {item.email}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                  Departure Time : {item.departureTime}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                  Arrival Airport : {item.arrivalAirport}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                  Arrival Time : {item.arrivalTime}
+                  Phone Number : {item.phoneNumber}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" onClick={()=>{
                     setFlightNumber(item.flightNumber);
                     handleOpen()
-                    }}>Reserve</Button>
+                    }}>Book</Button>
                 </CardActions>
               </Card>
             </Grid>
@@ -64,4 +58,4 @@ function ListContainer({ list }) {
   );
 }
 
-export default ListContainer;
+export default ListContainerReservations;

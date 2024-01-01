@@ -9,13 +9,13 @@ app.use(cors({
 const port = 3005;
 app.use(express.json());
 
-const flightService = "http://flight-service:80";
-const bookingService = "http://booking-service:80";
-const reservationService = "http://reservation-service:80";
+// const flightService = "http://flight-service:80";
+// const bookingService = "http://booking-service:80";
+// const reservationService = "http://reservation-service:80";
 
-// const flightService = "http://localhost:3001";
-// const bookingService = "http://localhost:8080";
-// const reservationService = "http://localhost:8088";
+const flightService = "http://localhost:3001";
+const bookingService = "http://localhost:8080";
+const reservationService = "http://localhost:8088";
 
 app.get("/", (req, res) => {
   res.send("Backend for frontend");
