@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 import Box from "@mui/material/Box";
 import { TextField, Button, Grid } from "@mui/material";
 import Modal from "@mui/material/Modal";
-import { createReservation } from "../../api/reservations";
+import { createBooking } from "../../api/bookings";
 
 const style = {
   position: "absolute",
@@ -17,37 +17,16 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ open, handleClose, flightNumber }) {
+export default function BasicModalBooking({ open, handleClose, flightId, reservationId}) {
   // Get QueryClient from the context
   const queryClient = useQueryClient();
-  const [formData, setFormData] = useState({
-    flightId: "",
-    passportNo: "",
-    email: "",
-    phoneNumber: "",
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const mutation = useMutation(createReservation, {
+  const mutation = useMutation(createBooking, {
     onSuccess: (data) => {
       // Refetch the flights data after successful mutation
-      queryClient.invalidateQueries("reservations");
+      queryClient.invalidateQueries("bookings");
       // You can add a notification here, like showing a success message
-      console.log("Flight created:", data);
-
-      setFormData({
-        flightId: "",
-        passportNo: "",
-        email: "",
-        phoneNumber: "",
-      });
+      console.log("Booking created:", data);
 
       handleClose();
     },
@@ -56,8 +35,9 @@ export default function BasicModal({ open, handleClose, flightNumber }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const reservationData = {
-      ...formData,
-      flightId: flightNumber
+      flightId,
+      reservationId,
+      paymentStatus: "success",
     }
     mutation.mutate(reservationData);
   };
@@ -74,37 +54,17 @@ export default function BasicModal({ open, handleClose, flightNumber }) {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                name="reservationId"
+                label="reservationId"
+                value={reservationId}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
                 name="flightId"
                 label="flightId"
-                value={flightNumber}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="passportNo"
-                label="passportNo"
-                value={formData.passportNo}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="email"
-                label="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="phoneNumber"
-                label="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
+                value={flightId}
                 fullWidth
               />
             </Grid>
@@ -115,7 +75,7 @@ export default function BasicModal({ open, handleClose, flightNumber }) {
                 color="primary"
                 disabled={mutation.isLoading}
               >
-                {mutation.isLoading ? "Submitting..." : "Submit"}
+                {mutation.isLoading ? "Pending..." : "Book"}
               </Button>
               {mutation.isError && <div>Error: {mutation.error.message}</div>}
             </Grid>
