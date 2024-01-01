@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { TextField, Button, Grid } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { createReservation } from "../../api/reservations";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -18,6 +19,7 @@ const style = {
 };
 
 export default function BasicModal({ open, handleClose, flightNumber }) {
+  const navigate = useNavigate()
   // Get QueryClient from the context
   const queryClient = useQueryClient();
   const [formData, setFormData] = useState({
@@ -50,6 +52,8 @@ export default function BasicModal({ open, handleClose, flightNumber }) {
       });
 
       handleClose();
+
+      navigate('/reservations')
     },
   });
 

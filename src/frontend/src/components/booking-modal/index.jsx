@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { TextField, Button, Grid } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { createBooking } from "../../api/bookings";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -20,6 +21,7 @@ const style = {
 export default function BasicModalBooking({ open, handleClose, flightId, reservationId}) {
   // Get QueryClient from the context
   const queryClient = useQueryClient();
+  const navigate = useNavigate()
 
   const mutation = useMutation(createBooking, {
     onSuccess: (data) => {
@@ -29,6 +31,8 @@ export default function BasicModalBooking({ open, handleClose, flightId, reserva
       console.log("Booking created:", data);
 
       handleClose();
+
+      navigate('/bookings')
     },
   });
 

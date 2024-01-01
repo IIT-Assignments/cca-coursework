@@ -19,7 +19,7 @@ frontend:
 
   image:
     name: frontend
-    tag: v3
+    tag: v4
     exposedPort: 3000
 
 mainserver:
