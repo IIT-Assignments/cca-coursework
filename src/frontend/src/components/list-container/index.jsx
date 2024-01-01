@@ -7,8 +7,15 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import AirlineImage from "../../assets/airline.webp"
+import BasicModal from "../modal";
 
 function ListContainer({ list }) {
+
+  const [open, setOpen] = React.useState(false);
+  const [flightNumber, setFlightNumber] = React.useState(null);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Grid container spacing={2}>
@@ -43,12 +50,16 @@ function ListContainer({ list }) {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Book</Button>
+                  <Button size="small" onClick={()=>{
+                    setFlightNumber(item.flightNumber);
+                    handleOpen()
+                    }}>Reserve</Button>
                 </CardActions>
               </Card>
             </Grid>
           ))}
       </Grid>
+      <BasicModal open={open} handleClose={handleClose} flightNumber={flightNumber}/>
     </div>
   );
 }

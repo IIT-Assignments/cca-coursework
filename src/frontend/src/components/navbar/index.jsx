@@ -16,8 +16,9 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 const pages = [
   { page: "Flights", pageLink: "" },
-  { page: "Bookings", pageLink: "bookings" },
+
   { page: "Reservations", pageLink: "reservations" },
+  { page: "Bookings", pageLink: "bookings" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -133,7 +134,12 @@ function Navbar() {
                   textDecoration: "none",
                 }}
               >
-                <Link style={{ textDecoration: "none", color: "white"}}  to={item.pageLink}>{item.page}</Link>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={item.pageLink}
+                >
+                  {item.page}
+                </Link>
               </Button>
             ))}
           </Box>
