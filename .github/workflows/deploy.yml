@@ -43,8 +43,8 @@ jobs:
         docker push senuradockacc/reservation-service:v1
 
         cd ../frontend
-        docker build -t senuradockacc/frontend:v1 --build-arg REACT_APP_BFF_SERVICE_ARG=${{ secrets.REACT_APP_BFF_SERVICE }} .
-        docker push senuradockacc/frontend:v1
+        docker build -t senuradockacc/frontend:v2 --build-arg REACT_APP_BFF_SERVICE_ARG=${{ secrets.REACT_APP_BFF_SERVICE }} .
+        docker push senuradockacc/frontend:v2
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0
@@ -60,5 +60,5 @@ jobs:
     
     - name: Deploy nodejs helm chart to EKS
       run: |
-        helm install ./k8s --generate-name #This is for the first time
-        # helm upgrade k8s-1702826047 ./k8s 
+        # helm install ./k8s --generate-name #This is for the first time
+        helm upgrade k8s-1705162751 ./k8s 
