@@ -43,8 +43,8 @@ jobs:
         docker push senuradockacc/reservation-service:v1
 
         cd ../frontend
-        docker build -t senuradockacc/frontend:v3 --build-arg REACT_APP_BFF_SERVICE_ARG=${{ secrets.REACT_APP_BFF_SERVICE }} .
-        docker push senuradockacc/frontend:v3
+        docker build -t senuradockacc/frontend:v4 --build-arg REACT_APP_BFF_SERVICE_ARG=${{ secrets.REACT_APP_BFF_SERVICE }} .
+        docker push senuradockacc/frontend:v4
 
     - name: Configure Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v0

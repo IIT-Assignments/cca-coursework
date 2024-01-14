@@ -31,7 +31,7 @@ function ListContainer({ list }) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                  Flight Number New: {item.flightNumber}
+                  Flight Number: {item.flightNumber}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                   Airline : {item.airline}
