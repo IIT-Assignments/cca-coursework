@@ -20,6 +20,11 @@ export class ReservationController {
     return this.reservationService.createReservation(reservation);
   }
 
+  @Get()
+  async getReservations(): Promise<Reservation[]> {
+    return this.reservationService.getReservations();
+  }
+
   @Get(':passportNo')
   async getReservationsForUser(
     @Param('passportNo') passportNo: string,

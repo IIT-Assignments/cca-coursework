@@ -15,6 +15,10 @@ export class ReservationService {
     return await this.reservationModule.create(reservation);
   }
 
+  async getReservations(): Promise<Reservation[]> {
+    return await this.reservationModule.find();
+  }
+
   async getReservationsByPassportNo(
     passportNo: string,
   ): Promise<Reservation[]> {
